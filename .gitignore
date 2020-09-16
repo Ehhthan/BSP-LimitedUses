@@ -1,2 +1,6 @@
 /.idea/
 /target/
+.idea/compiler.xml
+.idea/modules.xml
+.idea/.name
+.idea/misc.xml
