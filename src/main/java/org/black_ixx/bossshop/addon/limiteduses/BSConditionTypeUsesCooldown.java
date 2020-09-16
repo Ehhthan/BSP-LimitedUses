@@ -1,10 +1,8 @@
 package org.black_ixx.bossshop.addon.limiteduses;
 
 import org.black_ixx.bossshop.core.BSBuy;
-import org.black_ixx.bossshop.core.BSShop;
 import org.black_ixx.bossshop.core.BSShopHolder;
 import org.black_ixx.bossshop.core.conditions.BSConditionType;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 

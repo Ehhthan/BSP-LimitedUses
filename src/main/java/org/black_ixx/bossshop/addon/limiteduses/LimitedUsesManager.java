@@ -1,7 +1,5 @@
 package org.black_ixx.bossshop.addon.limiteduses;
 
-import java.util.*;
-
 import org.black_ixx.bossshop.BossShop;
 import org.black_ixx.bossshop.api.BSAddonStorage;
 import org.black_ixx.bossshop.core.BSBuy;
@@ -10,6 +8,8 @@ import org.black_ixx.bossshop.managers.ClassManager;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+
+import java.util.*;
 
 public class LimitedUsesManager {
 
