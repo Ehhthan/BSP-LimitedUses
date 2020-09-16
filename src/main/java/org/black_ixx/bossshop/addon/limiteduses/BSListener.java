@@ -51,7 +51,8 @@ public class BSListener implements Listener {
     public void onRegisterTypes(BSRegisterTypesEvent e) {
         new BSConditionTypeUses(manager).register();
         new BSConditionTypeCooldown(manager).register();
-    }
+        new BSConditionTypeUsesCooldown(manager).register();
+}
 
     @EventHandler
     public void onItemPurchased(BSPlayerPurchasedEvent e) {
@@ -66,6 +67,10 @@ public class BSListener implements Listener {
             b = true;
         }
 
+        if (hasConditionUsesCooldown(e.getShopItem())) {
+            manager.progressUsesCooldown(e.getPlayer(), e.getShop(), e.getShopItem());
+            b = true;
+        }
         if (b) {
             plugin.getBossShop().getAPI().updateInventory(e.getPlayer());
         }
@@ -98,6 +103,13 @@ public class BSListener implements Listener {
                     if (c != null) {
                         if (c.getConditionType().equalsIgnoreCase(">") || c.getConditionType().equalsIgnoreCase("over")) {
                             time_to_wait = InputReader.getInt(c.getCondition(), 0) * 1000;
+                        }
+                    }
+                    else {
+                        c = getCondition(buy.getCondition(), "usescooldown");
+                        if (c != null) {
+                            String split[] = c.getCondition().split(":");
+                            time_to_wait = Integer.valueOf(split[3]) * 1000;
                         }
                     }
                     long time_left = time_to_wait - time;
@@ -146,6 +158,12 @@ public class BSListener implements Listener {
         BSCondition condition = buy.getCondition();
         return getCondition(condition, "cooldown") != null;
     }
+
+    public boolean hasConditionUsesCooldown(BSBuy buy) {
+        BSCondition condition = buy.getCondition();
+        return getCondition(condition, "usescooldown") != null;
+    }
+
 
     private BSSingleCondition getCondition(BSCondition condition, String conditiontype) {
         if (condition != null) {

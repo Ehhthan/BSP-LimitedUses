@@ -1,10 +1,6 @@
 package org.black_ixx.bossshop.addon.limiteduses;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import org.black_ixx.bossshop.BossShop;
 import org.black_ixx.bossshop.api.BSAddonStorage;
@@ -201,6 +197,11 @@ public class LimitedUsesManager {
     public void progressUse(OfflinePlayer p, BSShop shop, BSBuy buy) {
         long value = detectUsedAmount(p, shop, buy);
         progressValue(p, shop, buy, uses, value + 1);
+    }
+
+    public void progressUsesCooldown(OfflinePlayer p, BSShop shop, BSBuy buy) {
+        progressUse(p, shop, buy);
+        progressCooldown(p, shop, buy);
     }
 
     public void progressCooldown(OfflinePlayer p, BSShop shop, BSBuy buy) {

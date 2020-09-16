@@ -1,8 +1,7 @@
 name: LimitedUses
 version: ${project.version}
 description: BossShopPro Addon - Allows to limit the amount of uses of items.
-author: Black_ixx
-website: http://felix.neuby.de
+author: Black_ixx, Ehh
 main: org.black_ixx.bossshop.addon.limiteduses.LimitedUses
 depend: [BossShopPro]
 commands:
